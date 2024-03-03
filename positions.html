@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Good luck</title>
+	<style>
+		p {
+			color: green;
+			font-weight: bold;
+		}
+	
+	.wrapper {
+  background-color: red;
+  color: white;
+}
+.text2 {
+  background-color: green;
+}
+
+.inline {
+  display: inline-block;
+  color: black;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+
+.invisible {
+  display: none;
+}
+
+.flex-container {
+  display: flex;
+  font-size: 20px;
+  flex-direction: row-reverse;/* отвечает за сворачивание (создание новой строки, если закончилось место)*/
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 250px;
+  border: 5px solid blue;
+}
+
+.item {
+  border: 2px solid red;
+  padding: 10px;
+}
+
+.container {
+  position: relative;
+  height: 200px;
+}
+.box {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  background-color: rgb(100, 200, 20);
+ 
+}
+.box1 {
+  top: 20px;
+  left: 60px;
+  z-index: -5;
+}
+.box2 {
+  top: 65px;
+  left: -3px;
+  z-index: -2;
+}
+.box3 {
+  top: 100px;
+  left: 50px;
+  z-index: 5;
+}
+
+
+</style>
+
+</head>
+
+<body>
+    
+    <div class="wrapper">
+  <div>Hello! How are you </div>
+  <div class="text2">I am fine, me too</div>
+</div>
+    
+<div>
+  <div class="inline red">
+    I inline block
+ </div>
+  <div class="inline blue">
+    Me too
+  </div>
+</div>
+
+<div>
+  тут невидимый блок внизу
+  <div class="invisible">
+    Я невидимый блок :)
+  </div>
+</div>
+
+<div class="flex-container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+  <div class="item">7</div>
+</div>
+  
+<div class='container'>
+  <div class="box box1">1</div>
+  <div class="box box2">2</div>
+  <div class="box box3">3</div>
+</div>
+  
+  </body>
+</html>
