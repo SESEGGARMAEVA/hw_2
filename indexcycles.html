@@ -62,13 +62,13 @@
             let food = dishs[i];
             let totalCostPreparation = 0;
 
-            for (let j = 0; j < foot.ingredients.length; j++) {
-                let ingredient = foot.ingredients[j];
+            for (let j = 0; j < food.ingredients.length; j++) {
+                let ingredient = food.ingredients[j];
                 let cost = ingredientsPrice[ingredient];
                 totalCostPreparation += cost;
             }
 
-            console.log(`Стоимость приготовления блюда "${foot.name}": ${totalCostPreparation}`);
+            console.log(`Стоимость приготовления блюда "${food.name}": ${totalCostPreparation}`);
         }
 
 
