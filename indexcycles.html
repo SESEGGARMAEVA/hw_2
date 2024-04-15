@@ -39,7 +39,6 @@
             price: 776,
         },
     ]
-        
         let ingredientsPrice = {
             'рисовые брусочки': 171,
             'вода': 20,
@@ -58,21 +57,32 @@
             'имбирь': 25,
             'кунжутное масло': 20,
         };
+        let dishsList = '';
+
         for (let i = 0; i < dishs.length; i++) {
             let food = dishs[i];
             let totalCostPreparation = 0;
 
-            for (let j = 0; j < food.ingredients.length; j++) {
+        for (let j = 0; j < food.ingredients.length; j++) {
                 let ingredient = food.ingredients[j];
                 let cost = ingredientsPrice[ingredient];
                 totalCostPreparation += cost;
             }
+        console.log(`Стоимость приготовления блюда "${food.name}": ${totalCostPreparation}`);
 
-            console.log(`Стоимость приготовления блюда "${food.name}": ${totalCostPreparation}`);
-        }
-
-
- </script>
+        let menuList = `Название блюда: 
+            -${food.name}. 
+        Состав блюда: 
+            -${food.ingredients}. 
+        Цена: 
+            -${food.price} рублей`;
+        console.log('--------------');
+        console.log(menuList);
+        dishsList += dishsList + '\n' + menuList;
+    }
+        console.log('==============')
+        console.log(dishsList);
+</script>
 </head>
 <body>
     
