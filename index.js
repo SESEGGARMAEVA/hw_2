@@ -1,0 +1,67 @@
+function min(a, b) {
+    if (a < b) {
+     return a;
+    } else {
+     return b; 
+    }
+ }
+    let result = min(7, 4);
+console.log(result);
+
+    let dishs = [ 
+    {
+    name: 'tteokbokki',
+    ingredients: [ 'рисовые брусочки', 'вода', 'красный острый перец', 'чеснок', 'перечная паста', ],
+    cookingPrice: 216,
+    price: 674,
+},
+{
+    name: 'kimchi',
+    ingredients: [ 'пекинская капуста', 'соль', 'красный острый перец', 'чеснок', 'имбирь', ],
+    cookingPrice: 204,
+    price: 548,
+},
+{
+    name: 'bulgogi',
+    ingredients: [ 'говядина', 'мягкая груша', 'черный перец', 'чеснок', 'имбирь', 'кунжутное масло', ],
+    cookingPrice: 318,
+    price: 776,
+},
+]
+    let ingredientsPrice = {
+    'рисовые брусочки': 171,
+    'вода': 20,
+    'красный острый перец': 10,
+    'чеснок': 10, 
+    'перечная паста': 5,
+    'пекинская капуста': 144, 
+    'соль': 20,
+    'красный острый перец': 10,
+    'чеснок': 10,
+    'имбирь': 20,
+    'говядина': 238,
+    'мягкая груша': 15,
+    'черный перец': 10,
+    'чеснок': 10,
+    'имбирь': 25,
+    'кунжутное масло': 20,
+};
+
+function calculateProfit(dishs, ingredientsPrice) {
+    for (let i = 0; i < dishs.length; i++) {
+        let food = dishs[i];
+        let totalCostPreparation = 0;
+
+    for (let j = 0; j < food.ingredients.length; j++) {
+            let ingredient = food.ingredients[j];
+            let cost = ingredientsPrice[ingredient];
+            totalCostPreparation += cost;
+        }
+        let profit = food.price - totalCostPreparation;
+        food.profit = profit;
+    }
+}
+        calculateProfit(dishs, ingredientsPrice);
+console.log(dishs);
+
+
