@@ -18,7 +18,7 @@
             }
             i++
         }
-
+    
         let dishs = [ 
             {
             name: 'tteokbokki',
@@ -57,8 +57,8 @@
             'имбирь': 25,
             'кунжутное масло': 20,
         };
-        let dishsList = '';
-
+       
+        
         for (let i = 0; i < dishs.length; i++) {
             let food = dishs[i];
             let totalCostPreparation = 0;
@@ -68,20 +68,10 @@
                 let cost = ingredientsPrice[ingredient];
                 totalCostPreparation += cost;
             }
-        console.log(`Стоимость приготовления блюда "${food.name}": ${totalCostPreparation}`);
-
-        let menuList = `Название блюда: 
-            -${food.name}. 
-        Состав блюда: 
-            -${food.ingredients}. 
-        Цена: 
-            -${food.price} рублей`;
-        console.log('--------------');
-        console.log(menuList);
-        dishsList += dishsList + '\n' + menuList;
-    }
-        console.log('==============')
-        console.log(dishsList);
+        }
+    console.log(`Стоимость приготовления блюда "${food.name}": ${totalCostPreparation}`);
+        
+        
 </script>
 </head>
 <body>
