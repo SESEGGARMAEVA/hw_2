@@ -57,21 +57,28 @@
             'имбирь': 25,
             'кунжутное масло': 20,
         };
-       
+            let menu = '';
         
         for (let i = 0; i < dishs.length; i++) {
             let food = dishs[i];
             let totalCostPreparation = 0;
+            
 
         for (let j = 0; j < food.ingredients.length; j++) {
                 let ingredient = food.ingredients[j];
                 let cost = ingredientsPrice[ingredient];
                 totalCostPreparation += cost;
             }
-        }
+        
     console.log(`Стоимость приготовления блюда "${food.name}": ${totalCostPreparation}`);
-        
-        
+    
+            let dishInfo = `Название блюда: ${food.name}
+                    Ингредиенты: ${food.ingredients.join(", ")}
+                    Стоимость приготовления: ${food.cookingPrice}
+                    Цена в меню: ${food.price};`
+            menu += dishInfo + "\n";
+        }
+    console.log(menu);
 </script>
 </head>
 <body>
