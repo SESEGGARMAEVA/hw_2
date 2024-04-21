@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Объект для хранения пользователей и паролей
+       let users = {
+           admin: 'root',
+           user: 123
+        }
+
+        // Запрашиваем имя пользователя
+        let username = prompt('user');
+
+        // Проверяем имя пользователя
+        if (username !== 'admin' && username !== 'user') {
+            alert('Такого пользователя не существует');
+        } else {
+
+        // Запрашиваем пароль
+        let password = prompt(123);
+
+        // Проверяем пароль
+        if (!((username === 'admin' && password !== 'root') || (username === 'user' && password !== '123'))) {
+            alert('Вы вошли');
+        } else {
+            alert('Неправильный пароль');
+        }
+    }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
