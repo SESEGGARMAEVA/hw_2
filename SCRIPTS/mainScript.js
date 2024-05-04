@@ -1,4 +1,4 @@
-// main_script.js
+// mainscript.js
 
 // Импортируем функцию min и calculateProfit из модуля userModule.js
 import { min, calculateProfit } from "./userModule.js";
