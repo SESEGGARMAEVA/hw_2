@@ -2,10 +2,11 @@
 
 function min(a, b) {
     if (a < b) {
-     return a;
-    } else {
-     return b; 
-    }
+        return a;
+       } else {
+        return b; 
+       }
+    
  }
 function calculateProfit(dishs, ingredientsPrice) {
     for (let i = 0; i < dishs.length; i++) {
@@ -22,4 +23,7 @@ function calculateProfit(dishs, ingredientsPrice) {
     }
 }
 // Вынес функции в модуль
-export { min, calculateProfit};
+export { 
+    min, 
+    calculateProfit
+}
