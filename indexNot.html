@@ -23,10 +23,11 @@
         let password = prompt(123);
 
         // Проверяем пароль
-        if (!((username === 'admin' && password !== 'root') || (username === 'user' && password !== '123'))) {
-            alert('Вы вошли');
-        } else {
+        if ((username === 'admin' && password !== 'root') 
+        || (username === 'user' && password !== '123')) {
             alert('Неправильный пароль');
+        } else {
+            alert('Вы вошли');
         }
     }
 
