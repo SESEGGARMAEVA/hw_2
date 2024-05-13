@@ -4,20 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- Подключаем модуль с функциями min и calculateProfit -->
-    <script type="module" src="./scripts/userModule.js"></script>
-    <!-- Подключаем файл - основной скрипт mainScript.js -->
-    <script type="module" src="./scripts/mainScript.js"></script>
     
-<script>
-// JavaScript код с использованием функции min
-function min(a, b) {
-    if (a < b) {
-     return a;
-    } else {
-     return b; 
-    }
- }
+<script type="module">
+    import {min, calculateProfit } from "./moduleFunction.js/"
+
     let result = min(7, 4);
 console.log(result);
 
@@ -59,24 +49,15 @@ console.log(result);
     'имбирь': 25,
     'кунжутное масло': 20,
 };
-// JavaScript код с использованием функции calculateProfit
-function calculateProfit(dishs, ingredientsPrice) {
-    for (let i = 0; i < dishs.length; i++) {
-        let food = dishs[i];
-        let totalCostPreparation = 0;
 
-    for (let j = 0; j < food.ingredients.length; j++) {
-            let ingredient = food.ingredients[j];
-            let cost = ingredientsPrice[ingredient];
-            totalCostPreparation += cost;
-        }
-        let profit = food.price - totalCostPreparation;
-        food.profit = profit;
-    }
+for (let i = 0; i < dishs.length; i++) {
+    let food = dishs[i];
+    const profit = calculateProfit (
+        food.ingredients, 
+        food.price, 
+        ingredientsPrice);
+    console.log(profit);
 }
-
-calculateProfit(dishs, ingredientsPrice);
-console.log(dishs);
 
 </script>
 </head>
