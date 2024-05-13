@@ -10,27 +10,26 @@
             admin: 'root',
             user: '123'
     }
-        // Запрашиваем имя пользователя
-        let username = prompt('admin');
-        // Проверяем имя
-        if (username === 'admin' || username === 'user'){
-
-        // Проверяем наличие свойства в объекте users
-        if (users.hasProperty(username)) {
+        // Запрашиваем логин
+        let username = prompt('What is the login?');
+        // Проверяем логин
+        if (username === 'admin' || username === 'user') {
 
         // Запрашиваем пароль
-        let password = prompt(root);
+        let password = prompt('What password?');
         // Проверяем правильность пароля
-        if ((username === 'admin' && password === 'root') || (username === 'user' && password === '123')) {
-            
+        if (
+            (username === 'admin' && password === 'root') || 
+            (username === 'user' && password === '123') 
+           ){
+
             alert('Вы вошли');
         } else {
             alert('Неправильный пароль');
         }
         } else {
             alert('Такого пользователя не существует');
-        }
-    } 
+        } 
     
     </script>
 
