@@ -55,13 +55,19 @@ console.log(result);
 };
 
 function calculateProfit(ingredients, price, ingredientsPrice) {
-    let totalCostPreparation = 0;
+    //let totalCostPreparation = 0; 
+    //for (let j = 0; j < ingredients.length; j++) {
+    //let ingredient = ingredients[j];
+    //let cost = ingredientsPrice[ingredient];   
+    //totalCostPreparation += cost;
+    //}
 
-    for (let j = 0; j < ingredients.length; j++) {
-      let ingredient = ingredients[j];
-      let cost = ingredientsPrice[ingredient];
-      totalCostPreparation += cost;
-    }
+
+    // Использование перебирающие методы массивов reduce  
+    let totalCostPreparation = ingredients.reduce(function(sum, ingredient) {
+        return sum + ingredientsPrice[ingredient];
+    }, 0); 
+
     let profit = price - totalCostPreparation;
     return profit;
 }
@@ -72,7 +78,41 @@ function calculateProfit(ingredients, price, ingredientsPrice) {
         food.price, 
         ingredientsPrice);
     console.log(profit);
-}
+};
+    // Использование перебирающие методы массивов map
+    let newDish = dishs.map(function( dish ) {
+        return {
+            name: dish.name,
+            price: dish.price
+        };
+    });
+
+    console.log(newDish);
+
+    // Использование перебирающие методы массивов some
+    let hasVegetarianDish = dishs.some(function(dish) {
+        return dish.ingredients;
+    });
+    console.log(hasVegetarianDish);
+
+    // Использование перебирающие методы массивов every
+    let menuVegetarianDish = dishs.every(function(dish) {
+        return dish.ingredients.every(function(ingredient) {
+        return ingredient !== 'говядина';
+     });
+
+    });
+    console.log(menuVegetarianDish);
+
+    // Использование перебирающие методы массивов filter
+    let arrVegetarianDishs = dishs.filter(function(dish) {
+        return dish.ingredients.every(function(ingredient) {
+        return ingredient !== 'говядина';
+     });
+
+    });
+    console.log(arrVegetarianDishs);
+
 
 </script>
 </head>
@@ -80,3 +120,4 @@ function calculateProfit(ingredients, price, ingredientsPrice) {
     
 </body>
 </html>
+
