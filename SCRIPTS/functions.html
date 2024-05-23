@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Document</title>  
+
 <script type="module">
     import {min, calculateProfit } from "./moduleFunction.js"
+    
+    async function main() {
+    let menu, ingredientsPrice;
+
+        try {
+        const r1 = await fetch("./array_with_menu.json");
+        menu = await r1.json();
+        console.log(menu);
+        } catch (error) {
+        console.log("error in array_with_menu.json ")
+        alert(error);
+    
+    }
+        try {
+        const r2 = await fetch("./object_price_ingredients.json");
+        ingredientsPrice = await r2.json();
+        console.log(ingredientsPrice);
+        } catch (error) {
+        console.log("error in object_price_ingredients.json")
+        alert(error);
+        
+    }
+}
 
     let result = min(7, 4);
-console.log(result);
+    console.log(result);
 
     let dishs = [ 
     {
@@ -31,7 +54,8 @@ console.log(result);
     price: 776,
 },
 ]
-    let ingredientsPrice = {
+ 
+let ingredientsPrice = {
     'рисовые брусочки': 171,
     'вода': 20,
     'красный острый перец': 10,
@@ -59,9 +83,12 @@ for (let i = 0; i < dishs.length; i++) {
     console.log(profit);
 }
 
+main();
+
 </script>
 </head>
 <body> 
 
 </body>
 </html>
+
