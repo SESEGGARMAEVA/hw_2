@@ -86,30 +86,38 @@ function calculateProfit(ingredients, price, ingredientsPrice) {
             price: dish.price
         };
     });
-
+    
     console.log(newDish);
 
-    // Использование перебирающие методы массивов some
+    const nonVEgIngrs = ['говядина'];
+
+// Использование перебирающие методы массивов some
     let hasVegetarianDish = dishs.some(function(dish) {
-        return dish.ingredients;
+       return dish.ingredients.every(function(ingredient) {
+        return nonVEgIngrs.every(function(nonVEgIngrs){
+         return nonVEgIngrs !== ingredient;
+        });
+        });
     });
     console.log(hasVegetarianDish);
 
     // Использование перебирающие методы массивов every
     let menuVegetarianDish = dishs.every(function(dish) {
-        return dish.ingredients.every(function(ingredient) {
-        return ingredient !== 'говядина';
+       return dish.ingredients.every(function(ingredient) {
+        return nonVEgIngrs.every(function(nonVEgIngrs) {
+         return nonVEgIngrs !== ingredient;
+        });
      });
-
     });
     console.log(menuVegetarianDish);
 
     // Использование перебирающие методы массивов filter
     let arrVegetarianDishs = dishs.filter(function(dish) {
-        return dish.ingredients.every(function(ingredient) {
-        return ingredient !== 'говядина';
+      return dish.ingredients.every(function(ingredient) {
+        return nonVEgIngrs.every(function(nonVEgIngrs) {
+         return nonVEgIngrs !== ingredient;
+        });
      });
-
     });
     console.log(arrVegetarianDishs);
 
