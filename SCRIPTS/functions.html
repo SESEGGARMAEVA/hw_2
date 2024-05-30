@@ -8,81 +8,88 @@
 <script type="module">
     import {min, calculateProfit } from "./moduleFunction.js"
     
-    async function main() {
-    let menu, ingredientsPrice;
-
-        try {
-        const r1 = await fetch("./array_with_menu.json");
-        menu = await r1.json();
-        console.log(menu);
-        } catch (error) {
-        console.log("error in array_with_menu.json ")
-        alert(error);
+   
+async function main() {
     
-    }
-        try {
+    try {
+        // const [menu,  ingredientsPrice] = await Promise.all([fetch("./array_with_menu.json"). then(r => r.json), fetch("./object_price_ingredients.json")]);
+        const r1 = await fetch("./array_with_menu.json");
+        let menu = await r1.json();
+        console.log(menu);
+
         const r2 = await fetch("./object_price_ingredients.json");
-        ingredientsPrice = await r2.json();
+        let ingredientsPrice = await r2.json();
         console.log(ingredientsPrice);
-        } catch (error) {
-        console.log("error in object_price_ingredients.json")
-        alert(error);
-        
+
+    for (let i = 0; i < menu.length; i++) {
+        let food = menu[i];
+        const profit = calculateProfit (
+           food.ingredients, 
+           food.price, 
+           ingredientsPrice);
+        console.log(profit);
     }
-}
 
     let result = min(7, 4);
-    console.log(result);
+        console.log(result);
 
-    let dishs = [ 
-    {
-    name: 'tteokbokki',
-    ingredients: [ 'рисовые брусочки', 'вода', 'красный острый перец', 'чеснок', 'перечная паста', ],
-    cookingPrice: 216,
-    price: 674,
-},
-{
-    name: 'kimchi',
-    ingredients: [ 'пекинская капуста', 'соль', 'красный острый перец', 'чеснок', 'имбирь', ],
-    cookingPrice: 204,
-    price: 548,
-},
-{
-    name: 'bulgogi',
-    ingredients: [ 'говядина', 'мягкая груша', 'черный перец', 'чеснок', 'имбирь', 'кунжутное масло', ],
-    cookingPrice: 318,
-    price: 776,
-},
-]
- 
-let ingredientsPrice = {
-    'рисовые брусочки': 171,
-    'вода': 20,
-    'красный острый перец': 10,
-    'чеснок': 10, 
-    'перечная паста': 5,
-    'пекинская капуста': 144, 
-    'соль': 20,
-    'красный острый перец': 10,
-    'чеснок': 10,
-    'имбирь': 20,
-    'говядина': 238,
-    'мягкая груша': 15,
-    'черный перец': 10,
-    'чеснок': 10,
-    'имбирь': 25,
-    'кунжутное масло': 20,
-};
+    // Использование перебирающие методы массивов reduce 
+function calculateProfit(ingredients, price, ingredientsPrice) {
+    let totalCostPreparation = ingredients.reduce(function(sum, ingredient) {
+        return sum + ingredientsPrice[ingredient];
+    }, 0); 
 
-for (let i = 0; i < dishs.length; i++) {
-    let food = dishs[i];
-    const profit = calculateProfit (
-        food.ingredients, 
-        food.price, 
-        ingredientsPrice);
-    console.log(profit);
+    let profit = price - totalCostPreparation;
+        return profit;
 }
 
+    // Использование перебирающие методы массивов map
+    let newDish = menu.map(function( dish ) {
+        return {
+            name: dish.name,
+            price: dish.price
+        };
+    });
+    console.log(newDish);
+
+    const nonVEgIngrs = ['говядина'];
+
+    // Использование перебирающие методы массивов some
+    let hasVegetarianDish = menu.some(function(dish) {
+       return dish.ingredients.every(function(ingredient) {
+        return nonVEgIngrs.every(function(nonVEgIngrs){
+         return nonVEgIngrs !== ingredient;
+        });
+        });
+    });
+    console.log(hasVegetarianDish);
+
+    // Использование перебирающие методы массивов every
+    let menuVegetarianDish = menu.every(function(dish) {
+       return dish.ingredients.every(function(ingredient) {
+        return nonVEgIngrs.every(function(nonVEgIngrs) {
+         return nonVEgIngrs !== ingredient;
+        });
+     });
+    });
+    console.log(menuVegetarianDish);
+
+    // Использование перебирающие методы массивов filter
+    let arrVegetarianDishs = menu.filter(function(dish) {
+      return dish.ingredients.every(function(ingredient) {
+        return nonVEgIngrs.every(function(nonVEgIngrs) {
+         return nonVEgIngrs !== ingredient;
+        });
+     });
+    });
+    console.log(arrVegetarianDishs);
+
+}  catch (error) {
+       console.log("error in array_with_menu.json ")
+       alert(error);
+    }
+
+}
 main();
 
 </script>
